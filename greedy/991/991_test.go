@@ -22,7 +22,7 @@ func Test_brokenCalc(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if tt.real = brokenCalc(tt.x, tt.y); tt.real != tt.expect {
-				log.Fatal(tt.name, "real:", tt.real, " expect:", tt.expect)
+				t.Fatal(tt.name, "real:", tt.real, " expect:", tt.expect)
 			}
 		})
 	}
