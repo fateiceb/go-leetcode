@@ -1,7 +1,5 @@
 package greedy
 
-import "log"
-
 /*
 title:Gas Station
 content:
@@ -44,27 +42,16 @@ cost i代表第i个地方的损耗
 
 */
 func canCompleteCircuit(gas []int, cost []int) int {
-	startStation := 0
-	tank := 0
-	//选择起始点
-	for i := 0; i < len(gas); i++ {
-		if gas[i]-cost[i] > 0 {
-			startStation = i
-			tank += gas[startStation]
-			break
-		}
-	}
-	log.Println("start", startStation)
-	log.Println(tank)
-	ci := startStation - 1
-	gi := startStation
-	log.Println("gi", gi)
-	for tank > 0 {
-		ci = (ci + 1) % (len(gas) - 1)
-		gi = (gi + 1) % (len(gas) - 1)
-		tank = tank + gas[gi] - cost[ci]
-		if gi == startStation {
-			return gi
+	l := len(gas)
+	for i := 0; i < l; i++ {
+		j := i
+		remain := gas[i]
+		for (remain - cost[j]) >= 0 {
+			remain = remain - cost[j] + gas[(j+1)%l]
+			j = (j + 1) % l
+			if j == i {
+				return i
+			}
 		}
 	}
 
