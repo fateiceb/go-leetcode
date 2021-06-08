@@ -16,23 +16,7 @@ Example:
 返回链表 4->5.
 
 */
-func buildList() *ListNode {
-	return &ListNode{
-		Val:  1,
-		Next: nil,
-	}
-}
-func (l *ListNode) addNode(val int) {
-	tear := l
-	for tear.Next != nil {
-		tear = tear.Next
-	}
-	tear.Next = &ListNode{
-		Val:  val,
-		Next: nil,
-	}
 
-}
 func getKthFromEnd(head *ListNode, k int) *ListNode {
 	front := head
 	tear := head
