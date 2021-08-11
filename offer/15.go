@@ -31,6 +31,7 @@ func hammingWeight2(num uint32) int {
 	}
 	return cnt
 }
+
 func main() {
 	var num uint32
 	num = 0b11111111111111111111111111111001
